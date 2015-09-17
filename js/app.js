@@ -33,20 +33,36 @@ BjsApp.init = function(){
 	var sphere2 = BABYLON.Mesh.CreateSphere('sphere2', 16, 4, scene);
 	//sphere 2 position`
 	sphere2.position = new BABYLON.Vector3(3, 3, 3);
+	sphere2.scaling = new BABYLON.Vector3(1, 0.5, 0.5);
 
 	// create a box
 	var box = BABYLON.Mesh.CreateBox('box', 1, scene);
 	box.position = new BABYLON.Vector3(5, 2, -5);
+	box.scaling.y = 2;
+
+	//make box rotate
+	box.rotation.x = 45;
 
 	//create a cylinder
 	var cylinder = BABYLON.Mesh.CreateCylinder('cyl', 5, 1, 3, 30, scene);
 
 	var lines = BABYLON.Mesh.CreateLines('lines', [
-			new BABYLON.Vector3(0, 5, 0), new BABYLON.Vector3(1, 5, 0), new BABYLON.Vector3(0, 5, 1), new BABYLON.Vector3(2, 2, 0), new BABYLON.Vector3(1, 5, -5)], scene );
+			new BABYLON.Vector3(0, 5, 0), 
+			new BABYLON.Vector3(1, 5, 0), 
+			new BABYLON.Vector3(0, 5, 1), 
+			new BABYLON.Vector3(2, 2, 0), 
+			new BABYLON.Vector3(1, 5, -5)
+			], scene );
 
 	//render the scene
 	engine.runRenderLoop(function(){
 		scene.render();
+	});
+
+
+	//listen for resize event
+	window.addEventListener('resize', function(){
+		engine.resize();
 	});
 
 };
