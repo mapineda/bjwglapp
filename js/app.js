@@ -15,12 +15,26 @@ BjsApp.init = function(){
 
 	//create camera
 	var camera = new BABYLON.FreeCamera('FreeCamera', new BABYLON.Vector3(0 ,2, -15), scene);	
+	// interactive camera
+	camera.attachControl(canvas);
+
 
 	// light environment light (comes from above)
 	var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene);
 
+	// ground mesh 
+	var ground = BABYLON.Mesh.CreateGround('ground1', 20, 20, 2, scene);
+
 	//create a sphere
 	var sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 2, scene);
+	//sphere position
+	sphere.position.y = 1;
+
+	//second sphere
+	var sphere2 = BABYLON.Mesh.CreateSphere('sphere2', 16, 4, scene);
+	//sphere 2 position
+	sphere2.position = new BABYLON.Vector3(3, 3, 3);
+
 
 	engine.runRenderLoop(function(){
 		scene.render();
