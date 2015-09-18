@@ -67,6 +67,10 @@ BjsApp.init = function(){
 	planet3.position.z = 5;
 	planet3.material = planetMaterial;
 
+
+	//skybox
+	
+
 	//render the scene
 	engine.runRenderLoop(function(){
 		scene.render();
