@@ -21,54 +21,53 @@ BjsApp.init = function(){
 	// light environment light (comes from above)
 	var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene);
 
-	// ground mesh 
-	var ground = BABYLON.Mesh.CreateGround('ground1', 20, 20, 2, scene);
-
-	// var grass = new BABYLON.StandardMaterial('grass', scene);
-	// grass.diffuseTexture = new BABYLON.Texture('assets/images/grass.png', scene);
-
-	// ground.material = grass;
 
 
-	//create a sphere
-	var sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 2, scene);
-	//sphere position
-	sphere.position.y = 1;
 
-	//second sphere
-	var sphere2 = BABYLON.Mesh.CreateSphere('sphere2', 16, 4, scene);
-	//sphere 2 position`
-	sphere2.position = new BABYLON.Vector3(3, 3, 3);
-	sphere2.scaling = new BABYLON.Vector3(1, 0.5, 0.5);
+	//sun
+	var sun = BABYLON.Mesh.CreateSphere('sun', 16, 4, scene);
 
-	var sphereMaterial = new BABYLON.StandardMaterial('sphereMat', scene);
-	// adding color red
-	sphereMaterial.diffuseColor = new BABYLON.Color3(1, 0, 0);
-	// add transperancy
-	sphereMaterial.alpha = 0.5;
+	var sunMaterial = new BABYLON.StandardMaterial('sunMaterial', scene);
+	sunMaterial.emissiveTexture = new BABYLON.Texture('assets/images/sun.png', scene);
+	sunMaterial.diffuseColor = new BABYLON.Color3(0,0,0);
+	sunMaterial.specularColor = new BABYLON.Color3(0,0,0);
+	sunMaterial.emissiveTexture.uScale = 2;
+	sunMaterial.emissiveTexture.vScale = 2;
+	sunMaterial.emissiveTexture.hasAlpha = true;
+	sun.material = sunMaterial;
 
-	sphere2.material = sphereMaterial;
+	//sunlight 
+	var sunLight = new BABYLON.PointLight('sunLight', BABYLON.Vector3.Zero(), scene);
+	sunLight.intensity = 4;
 
-	// create a box
-	var box = BABYLON.Mesh.CreateBox('box', 1, scene);
-	box.position = new BABYLON.Vector3(5, 2, -5);
-	box.scaling.y = 2;
+	//planets
+	var planetMaterial = new BABYLON.StandardMaterial('planetMat', scene);
+	planetMaterial.diffuseTexture = new BABYLON.Texture('assets/images/sand.png', scene);
+	planetMaterial.specularColor = new BABYLON.Color3(0,0,0);
 
-	//make box rotate
-	box.rotation.x = 45;
 
-	box.material = sphereMaterial;
+	//planet one
+	var planet1 = BABYLON.Mesh.CreateSphere('planet1', 16, 1, scene);
+	planet1.position.x = 4;
+	planet1.material = planetMaterial;
 
-	//create a cylinder
-	var cylinder = BABYLON.Mesh.CreateCylinder('cyl', 5, 1, 3, 30, scene);
 
-	var lines = BABYLON.Mesh.CreateLines('lines', [
-			new BABYLON.Vector3(0, 5, 0), 
-			new BABYLON.Vector3(1, 5, 0), 
-			new BABYLON.Vector3(0, 5, 1), 
-			new BABYLON.Vector3(2, 2, 0), 
-			new BABYLON.Vector3(1, 5, -5)
-			], scene );
+	//planet two 
+	var planet2 = BABYLON.Mesh.CreateSphere('planet2', 16, 1, scene);
+	planet2.position.x = 8;
+	planet2.position.z = -12;
+	planet2.material = planetMaterial;
+
+
+	//planet two 
+	var planet3 = BABYLON.Mesh.CreateSphere('planet3', 16, 0.5, scene);
+	planet3.position.x = 10;
+	planet3.position.z = 5;
+	planet3.material = planetMaterial;
+
+
+	//skybox
+
 
 	//render the scene
 	engine.runRenderLoop(function(){
