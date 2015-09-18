@@ -12,23 +12,33 @@ BjsApp.init = function(){
 	//create a new scene
 	var scene = new BABYLON.Scene(engine);
 
-	//create a camera
-	var camera = new BABYLON.ArcRotateCamera('camera', 0, 0, 15, BABYLON.Vector3.Zero(), scene);
 
-	//let the user move the camera
+	//create camera
+	var camera = new BABYLON.FreeCamera('FreeCamera', new BABYLON.Vector3(0 ,2, -15), scene);	
+	// interactive camera
 	camera.attachControl(canvas);
 
-	//light
-	var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0,1,0), scene);
-	//light intensity
-	light.intensity = 0.5;
-	light.groundColor = new BABYLON.Color3(0,0,1);
+	// light environment light (comes from above)
+	var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene);
 
-	scene.clearColor = new BABYLON.Color3(0,0,0);
+
 
 
 	//sun
 	var sun = BABYLON.Mesh.CreateSphere('sun', 16, 4, scene);
+
+	var sunMaterial = new BABYLON.StandardMaterial('sunMaterial', scene);
+	sunMaterial.emissiveTexture = new BABYLON.Texture('assets/images/sun.png', scene);
+	sunMaterial.diffuseColor = new BABYLON.Color3(0,0,0);
+	sunMaterial.specularColor = new BABYLON.Color3(0,0,0);
+	sunMaterial.emissiveTexture.uScale = 2;
+	sunMaterial.emissiveTexture.vScale = 2;
+	sunMaterial.emissiveTexture.hasAlpha = true;
+	sun.material = sunMaterial;
+
+	//sunlight 
+	var sunLight = new BABYLON.PointLight('sunLight', BABYLON.Vector3.Zero(), scene);
+	sunLight.intensity = 4;
 
 	//planets
 	var planetMaterial = new BABYLON.StandardMaterial('planetMat', scene);
@@ -36,10 +46,27 @@ BjsApp.init = function(){
 	planetMaterial.specularColor = new BABYLON.Color3(0,0,0);
 
 
+	//planet one
 	var planet1 = BABYLON.Mesh.CreateSphere('planet1', 16, 1, scene);
 	planet1.position.x = 4;
 	planet1.material = planetMaterial;
 
+
+	//planet two 
+	var planet2 = BABYLON.Mesh.CreateSphere('planet2', 16, 1, scene);
+	planet2.position.x = 8;
+	planet2.position.z = -12;
+	planet2.material = planetMaterial;
+
+
+	//planet two 
+	var planet3 = BABYLON.Mesh.CreateSphere('planet3', 16, 0.5, scene);
+	planet3.position.x = 10;
+	planet3.position.z = 5;
+	planet3.material = planetMaterial;
+
+
+	//skybox
 
 
 	//render the scene
@@ -52,5 +79,3 @@ BjsApp.init = function(){
 	window.addEventListener('resize', function(){
 		engine.resize();
 	});
-
-};
