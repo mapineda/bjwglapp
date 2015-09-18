@@ -48,13 +48,28 @@ BjsApp.init = function(){
 	planetMaterial.diffuseTexture = new BABYLON.Texture('assets/images/sand.png', scene);
 	planetMaterial.specularColor = new BABYLON.Color3(0,0,0);
 
-
+	//planet one
 	var planet1 = BABYLON.Mesh.CreateSphere('planet1', 16, 1, scene);
 	planet1.position.x = 4;
 	planet1.material = planetMaterial;
 
 
+	//planet two 
+	var planet2 = BABYLON.Mesh.CreateSphere('planet2', 16, 1, scene);
+	planet2.position.x = 8;
+	planet2.position.z = -12;
+	planet2.material = planetMaterial;
 
+
+	//planet two 
+	var planet3 = BABYLON.Mesh.CreateSphere('planet3', 16, 0.5, scene);
+	planet3.position.x = 10;
+	planet3.position.z = 5;
+	planet3.material = planetMaterial;
+
+
+	//skybox
+	
 
 	//render the scene
 	engine.runRenderLoop(function(){
