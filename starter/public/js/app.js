@@ -30,6 +30,19 @@ BjsApp.init = function(){
 	//sun
 	var sun = BABYLON.Mesh.CreateSphere('sun', 16, 4, scene);
 
+	var sunMaterial = new BABYLON.StandardMaterial('sunMaterial', scene);
+	sunMaterial.emissiveTexture = new BABYLON.Texture('assets/images/sun.png', scene);
+	sunMaterial.diffuseColor = new BABYLON.Color3(0,0,0);
+	sunMaterial.specularColor = new BABYLON.Color3(0,0,0);
+	sunMaterial.emissiveTexture.uScale = 2;
+	sunMaterial.emissiveTexture.vScale = 2;
+	sunMaterial.emissiveTexture.hasAlpha = true;
+	sun.material = sunMaterial;
+
+	//sunlight 
+	var sunLight = new BABYLON.PointLight('sunLight', BABYLON.Vector3.Zero(), scene);
+	sunLight.intensity = 4;
+
 	//planets
 	var planetMaterial = new BABYLON.StandardMaterial('planetMat', scene);
 	planetMaterial.diffuseTexture = new BABYLON.Texture('assets/images/sand.png', scene);
@@ -39,6 +52,7 @@ BjsApp.init = function(){
 	var planet1 = BABYLON.Mesh.CreateSphere('planet1', 16, 1, scene);
 	planet1.position.x = 4;
 	planet1.material = planetMaterial;
+
 
 
 
