@@ -6,6 +6,8 @@ get '/' do
 
 end
 
-get '/index'
+get '/index' do 
+
+	erb :index 
 
 end
