@@ -12,16 +12,14 @@ BjsApp.init = function(){
 	//create a new scene
 	var scene = new BABYLON.Scene(engine);
 
+//create a camera
+	var camera = new BABYLON.ArcRotateCamera('camera', 0, 0, 15, BABYLON.Vector3.Zero(), scene);
 
-	//create camera
-	var camera = new BABYLON.FreeCamera('FreeCamera', new BABYLON.Vector3(0 ,2, -15), scene);	
-	// interactive camera
+	//let the user move the camera
 	camera.attachControl(canvas);
 
 	// light environment light (comes from above)
 	var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene);
-
-
 
 
 	//sun
@@ -79,3 +77,4 @@ BjsApp.init = function(){
 	window.addEventListener('resize', function(){
 		engine.resize();
 	});
+};
