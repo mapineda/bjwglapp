@@ -13,7 +13,13 @@ BjsApp.init = function(){
 	var scene = new BABYLON.Scene(engine);
 
 //create a camera
-	var camera = new BABYLON.ArcRotateCamera('camera', 0, 0, 15, BABYLON.Vector3.Zero(), scene);
+var camera = new BABYLON.FreeCamera("FreeCamera", new BABYLON.Vector3(0, 1, -15), scene);
+scene.activeCamera = camera;
+scene.activeCamera.attachControl(canvas);
+scene.activeCamera.keysUp.push(87); // W
+scene.activeCamera.keysLeft.push(65); // A 
+scene.activeCamera.keysDown.push(83); // S 
+scene.activeCamera.keysRight.push(68); // D 
 
 	//let the user move the camera
 	camera.attachControl(canvas);
@@ -55,7 +61,7 @@ BjsApp.init = function(){
 	skyboxMaterial.diffuseColor = new BABYLON.Color3(0,0,0);
 	skyboxMaterial.specularColor = new BABYLON.Color3(0,0,0);
 
-	//rexture of 6 sides of the cube
+	//texture of 6 sides of the cube
 	skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture('assets/images/skybox', scene);
 	skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
 	
@@ -69,9 +75,9 @@ BjsApp.init = function(){
 		planet2.position.z = planet2.orbit.radius * Math.cos(planet2.orbit.angle);
 		planet2.orbit.angle += planet2.orbit.speed;
 
-		planet3.position.x = planet3.orbit.radius * Math.sin(planet3.orbit.angle);
-		planet3.position.z = planet3.orbit.radius * Math.cos(planet3.orbit.angle);
-		planet3.orbit.angle += planet3.orbit.speed;
+		// planet3.position.x = planet3.orbit.radius * Math.sin(planet3.orbit.angle);
+		// planet3.position.z = planet3.orbit.radius * Math.cos(planet3.orbit.angle);
+		// planet3.orbit.angle += planet3.orbit.speed;
 	};	
 
 
@@ -96,7 +102,7 @@ BjsApp.init = function(){
 	//planet two 
 	var planet2 = BABYLON.Mesh.CreateSphere('planet2', 16, 1, scene);
 	planet2.position.x = 8;
-	planet2.position.z = -12;
+	planet2.position.z = 12;
 	planet2.material = planetMaterial;
 	planet2.orbit = {
 		radius: planet2.position.x,
@@ -105,19 +111,16 @@ BjsApp.init = function(){
 	}
 
 
-	//planet two 
-	var planet3 = BABYLON.Mesh.CreateSphere('planet3', 16, 0.5, scene);
-	planet3.position.x = 10;
-	planet3.position.z = 5;
-	planet3.material = planetMaterial;
-	planet3.orbit = {
-		radius: planet3.position.x,
-		speed: 0.01,
-		angle: 0
-	}
-
-
-	//skybox
+	//planet three
+	// var planet3 = BABYLON.Mesh.CreateSphere('planet3', 16, 0.5, scene);
+	// planet3.position.x = 6;
+	// planet3.position.z = 5;
+	// planet3.material = planetMaterial;
+	// planet3.orbit = {
+	// 	radius: planet3.position.x,
+	// 	speed: 0.01,
+	// 	angle: 0
+	// }
 
 
 	//render the scene
