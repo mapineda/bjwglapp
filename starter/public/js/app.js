@@ -40,7 +40,7 @@ BjsApp.init = function(){
 	sunLight.intensity = 4;
 
 	//skybox
-	var skybox.BABYLON.Mesh.CreateBox('skybox', 1000, scene);
+	var skybox = BABYLON.Mesh.CreateBox('skybox', 1000, scene);
 	var skyboxMaterial = new BABYLON.StandardMaterial('skyboxmat', scene);
 
 	//dont render what we cant see
@@ -56,8 +56,26 @@ BjsApp.init = function(){
 	skyboxMaterial.specularColor = new BABYLON.Color3(0,0,0);
 
 	//rexture of 6 sides of the cube
-	skyboxMaterial.reflectionTexuture = new BABYLON.CubeTexture('/assets/images/skybox', scene);
-	skyboxMaterial.reflectionTexture.coordinateMode = BABYLON.Texture.SKYBOX_MODE;
+	skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture('assets/images/skybox', scene);
+	skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+	
+	//thing medthod allows you to animate / move things
+	scene.beforeRender = function () {
+		planet1.position.x = planet1.orbit.radius * Math.sin(planet1.orbit.angle);
+		planet1.position.z = planet1.orbit.radius * Math.cos(planet1.orbit.angle);
+		planet1.orbit.angle += planet1.orbit.speed;
+
+		planet2.position.x = planet2.orbit.radius * Math.sin(planet2.orbit.angle);
+		planet2.position.z = planet2.orbit.radius * Math.cos(planet2.orbit.angle);
+		planet2.orbit.angle += planet2.orbit.speed;
+
+		planet3.position.x = planet3.orbit.radius * Math.sin(planet3.orbit.angle);
+		planet3.position.z = planet3.orbit.radius * Math.cos(planet3.orbit.angle);
+		planet3.orbit.angle += planet3.orbit.speed;
+	};	
+
+
+
 	//planets
 	var planetMaterial = new BABYLON.StandardMaterial('planetMat', scene);
 	planetMaterial.diffuseTexture = new BABYLON.Texture('assets/images/sand.png', scene);
@@ -68,6 +86,11 @@ BjsApp.init = function(){
 	var planet1 = BABYLON.Mesh.CreateSphere('planet1', 16, 1, scene);
 	planet1.position.x = 4;
 	planet1.material = planetMaterial;
+	planet1.orbit = {
+		radius: planet1.position.x,
+		speed: 0.01,
+		angle: 0
+	};
 
 
 	//planet two 
@@ -75,6 +98,11 @@ BjsApp.init = function(){
 	planet2.position.x = 8;
 	planet2.position.z = -12;
 	planet2.material = planetMaterial;
+	planet2.orbit = {
+		radius: planet2.position.x,
+		speed: -0.02,
+		angle: 0
+	}
 
 
 	//planet two 
@@ -82,6 +110,11 @@ BjsApp.init = function(){
 	planet3.position.x = 10;
 	planet3.position.z = 5;
 	planet3.material = planetMaterial;
+	planet3.orbit = {
+		radius: planet3.position.x,
+		speed: 0.01,
+		angle: 0
+	}
 
 
 	//skybox
