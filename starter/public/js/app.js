@@ -18,6 +18,7 @@ BjsApp.init = function(){
 	//let the user move the camera
 	camera.attachControl(canvas);
 
+	camera.upperRadiusLimit = 100;
 	// light environment light (comes from above)
 	var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene);
 
@@ -38,6 +39,25 @@ BjsApp.init = function(){
 	var sunLight = new BABYLON.PointLight('sunLight', BABYLON.Vector3.Zero(), scene);
 	sunLight.intensity = 4;
 
+	//skybox
+	var skybox.BABYLON.Mesh.CreateBox('skybox', 1000, scene);
+	var skyboxMaterial = new BABYLON.StandardMaterial('skyboxmat', scene);
+
+	//dont render what we cant see
+	skyboxMaterial.backFaceCulling = false;
+
+	//move with camera
+	skybox.infiniteDistance = true;
+
+	skybox.material = skyboxMaterial;
+
+	//remove reflection in skybox
+	skyboxMaterial.diffuseColor = new BABYLON.Color3(0,0,0);
+	skyboxMaterial.specularColor = new BABYLON.Color3(0,0,0);
+
+	//rexture of 6 sides of the cube
+	skyboxMaterial.reflectionTexuture = new BABYLON.CubeTexture('/assets/images/skybox', scene);
+	skyboxMaterial.reflectionTexture.coordinateMode = BABYLON.Texture.SKYBOX_MODE;
 	//planets
 	var planetMaterial = new BABYLON.StandardMaterial('planetMat', scene);
 	planetMaterial.diffuseTexture = new BABYLON.Texture('assets/images/sand.png', scene);
