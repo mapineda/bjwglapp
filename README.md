@@ -9,6 +9,7 @@ I'm interested in rendering 3D environments in the browser.
 
 * WebGL
 * BabylonJS
+* HTML5
 * Blender
 
 ## Resources
