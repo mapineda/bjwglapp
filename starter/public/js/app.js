@@ -33,7 +33,7 @@ scene.activeCamera.keysRight.push(68); // D
 	var sun = BABYLON.Mesh.CreateSphere('sun', 16, 4, scene);
 
 	var sunMaterial = new BABYLON.StandardMaterial('sunMaterial', scene);
-	sunMaterial.emissiveTexture = new BABYLON.Texture('assets/images/sun.png', scene);
+	sunMaterial.emissiveTexture = new BABYLON.Texture('../public/assets/images/sun.png', scene);
 	sunMaterial.diffuseColor = new BABYLON.Color3(0,0,0);
 	sunMaterial.specularColor = new BABYLON.Color3(0,0,0);
 	sunMaterial.emissiveTexture.uScale = 2;
@@ -62,7 +62,7 @@ scene.activeCamera.keysRight.push(68); // D
 	skyboxMaterial.specularColor = new BABYLON.Color3(0,0,0);
 
 	//texture of 6 sides of the cube
-	skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture('assets/images/skybox', scene);
+	skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture('../public/assets/images/skybox', scene);
 	skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
 	
 	//thing medthod allows you to animate / move things
@@ -84,7 +84,7 @@ scene.activeCamera.keysRight.push(68); // D
 
 	//planets
 	var planetMaterial = new BABYLON.StandardMaterial('planetMat', scene);
-	planetMaterial.diffuseTexture = new BABYLON.Texture('assets/images/sand.png', scene);
+	planetMaterial.diffuseTexture = new BABYLON.Texture('../public/assets/images/sand.png', scene);
 	planetMaterial.specularColor = new BABYLON.Color3(0,0,0);
 
 
