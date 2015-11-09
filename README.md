@@ -1,5 +1,5 @@
-## bjwglapp
-Responsive 3D universe simulator
+## BabylonJS*WebGL*app
+Responsive 3D universe simulator.
 
 ## Why
 
