@@ -3,7 +3,7 @@ Responsive 3D universe simulator.
 
 ## Why
 
-I'm interested in rendering 3D environments in the browser. Potential use case could be for a real estate company to build 3D renderings of their buildings in the browser for clients to view and explore.
+I'm interested in rendering 3D environments in the browser. Potential use case: Real estate company to build 3D renderings of their buildings in the browser for clients to view and explore.
 
 ## Tech Used
 
@@ -11,12 +11,17 @@ I'm interested in rendering 3D environments in the browser. Potential use case c
 * WebGL
 * BabylonJS
 * HTML5
-* Blender
 
 ## Screenshot
 
 ![Image of Simulation]
 (https://cloud.githubusercontent.com/assets/8691910/11027710/632acbfc-867d-11e5-801f-778dcee663df.png)
+
+## Getting Started
+
+1. Fork the repo
+2. In the command line: ruby app.rb
+3. Navigate to localhost:4567/index
 
 ## Resources
 
@@ -25,9 +30,6 @@ Web Graphics Library, or WebGL, is a JavaScript API designed to render interacti
 
 [BabylonJS](http://doc.babylonjs.com/)
 Open source 3D engine based on webGL and Javascript
-
-[Blender](https://www.blender.org/)
-Open source 3D graphics and animation software
 
 ## Contact
 
