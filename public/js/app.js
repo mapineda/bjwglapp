@@ -96,9 +96,9 @@ scene.activeCamera.keysRight.push(68); // D
 		planet7.position.z = planet7.orbit.radius * Math.cos(planet8.orbit.angle);
 		planet7.orbit.angle += planet7.orbit.speed;
 		//neptune
-		planet9.position.x = planet9.orbit.radius * Math.sin(planet9.orbit.angle);
-		planet9.position.z = planet9.orbit.radius * Math.cos(planet9.orbit.angle);
-		planet9.orbit.angle += planet9.orbit.speed;
+		planet8.position.x = planet8.orbit.radius * Math.sin(planet8.orbit.angle);
+		planet8.position.z = planet8.orbit.radius * Math.cos(planet8.orbit.angle);
+		planet8.orbit.angle += planet8.orbit.speed;
 
 
 		//astroids
@@ -187,13 +187,13 @@ scene.activeCamera.keysRight.push(68); // D
 	planetMaterial4.diffuseTexture = new BABYLON.Texture('assets/images/saturn.png', scene);
 	planetMaterial4.specularColor = new BABYLON.Color3(0,0,0);
 	//Uranus Texture
-	var planetMaterial4 = new BABYLON.StandardMaterial('planetMat4', scene);
-	planetMaterial3.diffuseTexture = new BABYLON.Texture('assets/images/uranus.png', scene);
-	planetMaterial3.specularColor = new BABYLON.Color3(0,0,0);
-	//Neptune Texture
 	var planetMaterial5 = new BABYLON.StandardMaterial('planetMat5', scene);
-	planetMaterial5.diffuseTexture = new BABYLON.Texture('assets/images/neptune.png', scene);
+	planetMaterial5.diffuseTexture = new BABYLON.Texture('assets/images/uranus.png', scene);
 	planetMaterial5.specularColor = new BABYLON.Color3(0,0,0);
+	//Neptune Texture
+	var planetMaterial6 = new BABYLON.StandardMaterial('planetMat6', scene);
+	planetMaterial6.diffuseTexture = new BABYLON.Texture('assets/images/neptune.png', scene);
+	planetMaterial6.specularColor = new BABYLON.Color3(0,0,0);
 
 	
 
@@ -245,7 +245,7 @@ scene.activeCamera.keysRight.push(68); // D
 	//Jupiter
 	var planet5 = BABYLON.Mesh.CreateSphere('planet5', 16, 10, scene);
 	planet5.position.x = 80;
-	planet5.position.z = 14;
+	planet5.position.z = 200;
 	planet5.material = planetMaterial3;
 	planet5.orbit = {
 		radius: planet5.position.x,
@@ -256,11 +256,11 @@ scene.activeCamera.keysRight.push(68); // D
 	//Saturn
 	var planet6 = BABYLON.Mesh.CreateSphere('planet6', 16, 9, scene);
 	planet6.position.x = 100;
-	planet6.position.z = 14;
+	planet6.position.z = 1;
 	planet6.material = planetMaterial4;
 	planet6.orbit = {
 		radius: planet6.position.x,
-		speed: 0.009,
+		speed: 0.007,
 		angle: 0
 	}
 
@@ -271,18 +271,18 @@ scene.activeCamera.keysRight.push(68); // D
 	planet7.material = planetMaterial5;
 	planet7.orbit = {
 		radius: planet7.position.x,
-		speed: 0.009,
+		speed: 0.003,
 		angle: 0
 	}
 
 	//Neptune
 	var planet8 = BABYLON.Mesh.CreateSphere('planet8', 16, 5, scene);
 	planet8.position.x = 250;
-	planet8.position.z = 14;
+	planet8.position.z = 20;
 	planet8.material = planetMaterial6;
 	planet8.orbit = {
 		radius: planet8.position.x,
-		speed: 0.009,
+		speed: 0.005,
 		angle: 0
 	}
 
