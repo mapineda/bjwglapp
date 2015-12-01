@@ -286,6 +286,17 @@ scene.activeCamera.keysRight.push(68); // D
 		angle: 0
 	}
 
+	//Pluto
+	// var planet9 = BABYLON.Mesh.CreateSphere('planet9', 16, 5, scene);
+	// planet9.position.x = 250;
+	// planet9.position.z = 20;
+	// planet9.material = planetMaterial7;
+	// planet9.orbit = {
+	// 	radius: planet9.position.x,
+	// 	speed: 0.005,
+	// 	angle: 0
+	// }
+
 	//astroid belt
 	var astroid1 = BABYLON.Mesh.CreateSphere('astroid1', 16, 1.5, scene);
 	astroid1.position.x = 20;
